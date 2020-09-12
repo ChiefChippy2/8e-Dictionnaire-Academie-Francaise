@@ -18,7 +18,7 @@ var utf=new TextDecoder("utf-8")
    return utf.decode(bytes.buffer);
 }
 fetch("mots.json").then(r=>r.json()).then(re=>{
-window.words=Object.keys(re)
+window.words=re
 window.dispatchEvent(new Event("loadend"))
 
 }).catch(e=>{console.error(e);setTimeout(()=>window.reload(),2000)})
@@ -29,7 +29,7 @@ inp.addEventListener("keydown",function(e){
 var sera=inp.value.toUpperCase().trim()
 var candid=window.words.filter(x=>x.includes(sera)||x.startsWith(sera)||x.endsWith(sera))
 var sug=document.querySelector(".sug")
-if(candid){
+if(candid.length){
 sug.innerHTML=candid.map(x=>'<span class="sugitem" onclick=req(this)>'+x+'</span><br><hr><br>').join("")
 
 }else{
