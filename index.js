@@ -1,4 +1,4 @@
-var inp=document.querySelector("input")
+window.inp=document.querySelector("input")
 function req(uest){
 fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+uest.innerText+".json")
 .then(r=>r.text())
