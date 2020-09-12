@@ -24,6 +24,7 @@ window.dispatchEvent(new Event("loadend"))
 }).catch(e=>{console.error(e);setTimeout(()=>window.reload(),2000)})
 
 window.addEventListener("loadend",function(){
+  var inp=document.querySelector("input")
 inp.addEventListener("keydown",function(e){
 var sera=inp.value.toUpperCase().trim()
 var candid=window.words.filter(x=>x.includes(sera)||x.startsWith(sera)||x.endsWith(sera))
