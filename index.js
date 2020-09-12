@@ -2,7 +2,7 @@ window.inp=document.querySelector("input")
 function req(uest){
  setTimeout(()=> uest.parentElement.innerHTML="",10)
  window.word=uest.innerText
-fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"++".json")
+fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+word+".json")
 .then(r=>r.text())
 .then(r=>document.querySelector("#answer").innerHTML=(decode(r.replace(/"/g,""))))
 .catch(e=> document.querySelector("#answer").innerHTML="Erreur : "+e)
@@ -46,7 +46,7 @@ sug.innerHTML="&times; Pas de mots correspondants."
 })
 function proc(ess){
  ess=ess.replace(/\n/g,"<br>")
- ess=ess.replace(new RegExp(uest.innerText,"gi"),x=>"<i>"+x+"</i>")
+ ess=ess.replace(new RegExp(word,"gi"),x=>"<i>"+x+"</i>")
  return ess
 
 
