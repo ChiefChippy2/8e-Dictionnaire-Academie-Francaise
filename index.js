@@ -9,7 +9,7 @@ fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+uest.innerText+".js
 }
 function decode(r){
 var utf=new TextDecoder("utf-8")
-  var binary_string = window.atob(base64);
+  var binary_string = window.atob(r);
     var len = binary_string.length;
     var bytes = new Uint8Array(len);
     for (var i = 0; i < len; i++) {
@@ -27,7 +27,7 @@ window.addEventListener("loadend",function(){
   var inp=document.querySelector("input")
 inp.addEventListener("keydown",function(e){
 var sera=inp.value.toUpperCase().trim()
-var candid=window.words.filter(x=>x.includes(sera)||x.startsWith(sera)||x.endsWith(sera))
+var candid=window.words.filter(x=>x.includes(sera)||x.startsWith(sera)||x.endsWith(sera)).slice(0,9)
 var sug=document.querySelector(".sug")
 if(candid.length){
 sug.innerHTML=candid.map(x=>'<span class="sugitem" onclick=req(this)>'+x+'</span><br><hr><br>').join("")
