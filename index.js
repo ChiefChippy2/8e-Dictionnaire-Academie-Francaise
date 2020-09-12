@@ -23,11 +23,11 @@ window.dispatchEvent(new Event("loadend"))
 
 }).catch(e=>{console.error(e);setTimeout(()=>window.reload(),2000)})
 
-window.addEventListner("loadend",function(){
+window.addEventListener("loadend",function(){
 inp.addEventListener("keydown",function(e){
 var sera=inp.value.toUpperCase().trim()
 var candid=window.words.filter(x=>x.includes(sera)||x.startsWith(sera)||x.endsWith(sera))
-var sug=document.querySelector("#sug")
+var sug=document.querySelector(".sug")
 if(candid){
 sug.innerHTML=candid.map(x=>'<span class="sugitem" onclick=req(this)>'+x+'</span><br><hr><br>').join("")
 
