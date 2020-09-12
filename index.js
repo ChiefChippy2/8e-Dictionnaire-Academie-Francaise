@@ -17,6 +17,7 @@ var utf=new TextDecoder("utf-8")
     for (var i = 0; i < len; i++) {
         bytes[i] = binary_string.charCodeAt(i);
     }
+ document.querySelector("#answer").scrollIntoView()
    return proc(utf.decode(bytes.buffer));
 }
 fetch("mots.json").then(r=>r.json()).then(re=>{
