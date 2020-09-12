@@ -1,7 +1,8 @@
 window.inp=document.querySelector("input")
 function req(uest){
  setTimeout(()=> uest.parentElement.innerHTML="",10)
-fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+uest.innerText+".json")
+ window.word=uest.innerText
+fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"++".json")
 .then(r=>r.text())
 .then(r=>document.querySelector("#answer").innerHTML=(decode(r.replace(/"/g,""))))
 .catch(e=> document.querySelector("#answer").innerHTML="Erreur : "+e)
@@ -10,13 +11,13 @@ fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+uest.innerText+".js
 }
 function decode(r){
 var utf=new TextDecoder("utf-8")
-  var binary_string = window.atob(r);
+  var binary_string = window.atob(r.replace(/€/g,"/"));
     var len = binary_string.length;
     var bytes = new Uint8Array(len);
     for (var i = 0; i < len; i++) {
         bytes[i] = binary_string.charCodeAt(i);
     }
-   return utf.decode(bytes.buffer);
+   return proc(utf.decode(bytes.buffer));
 }
 fetch("mots.json").then(r=>r.json()).then(re=>{
 window.words=re
@@ -43,3 +44,10 @@ sug.innerHTML="&times; Pas de mots correspondants."
 
 })
 })
+function proc(ess){
+ ess=ess.replace(/\n/g,"<br>")
+ ess=ess.replace(new RegExp(uest.innerText,"gi"),x=>"<i>"+x+"</i>")
+ return ess
+
+
+}
