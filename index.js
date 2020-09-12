@@ -27,12 +27,13 @@ window.dispatchEvent(new Event("loadend"))
 
 window.addEventListener("loadend",function(){
   var inp=document.querySelector("input")
-inp.addEventListener("keydown",function(e){
+inp.addEventListener("keyup",function(e){
+ document.querySelector("#answer").innerHTML=""
 var sera=inp.value.toUpperCase().trim()
 var candid=[...window.words.filter(x=>x.startsWith(sera)),...window.words.filter(x=>x.endsWith(sera)),...window.words.filter(x=>x.includes(sera))].slice(0,9)
 var sug=document.querySelector(".sug")
 if(candid.length){
-sug.innerHTML=candid.map(x=>'<span class="sugitem" onclick=req(this) >'+x+'</span><br><hr><br>').join("")
+sug.innerHTML=candid.map(x=>'<span class="sugitem" onclick=req(this) >'+x.replace(/\./g,"")+'</span><br><hr><br>').join("")
 
 }else{
 sug.innerHTML="&times; Pas de mots correspondants."
