@@ -2,7 +2,7 @@ window.inp=document.querySelector("input")
 function req(uest){
  setTimeout(()=> uest.parentElement.innerHTML="",10)
  window.word=uest.innerText
-fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+word+".json")
+fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+word.replace(/\./g,"%2E")+".json")
 .then(r=>r.text())
 .then(r=>document.querySelector("#answer").innerHTML=(decode(r.replace(/"/g,""))))
 .catch(e=> document.querySelector("#answer").innerHTML="Erreur : "+e)
