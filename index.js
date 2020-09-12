@@ -1,6 +1,7 @@
 window.inp=document.querySelector("input")
 function req(uest){
  setTimeout(()=> uest.parentElement.innerHTML="",10)
+ document.querySelector("input").value=uest.innerText
  window.word=uest.innerText
 fetch("https://dictiona1234.firebaseio.com/dictionaries/v8/"+word.replace(/\./g,"%2E")+".json")
 .then(r=>r.text())
